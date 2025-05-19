@@ -70,11 +70,11 @@ body {
 }
 
 .orb {
-  width: 80px;
-  height: 80px;
+  width: 120px;  /* Increased size */
+  height: 120px; /* Increased size */
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #9b87f5, #7E69AB);
-  box-shadow: 0 0 20px rgba(155, 135, 245, 0.3);
+  box-shadow: 0 0 30px rgba(155, 135, 245, 0.5); /* Enhanced glow */
 }
 
 .orb-ripple {
@@ -87,20 +87,44 @@ body {
   left: 0;
 }
 
-.messages-container {
-  scrollbar-width: thin;
-  scrollbar-color: #7E69AB #222;
+/* Animation keyframes for pulse and ripple effects */
+@keyframes pulse-light {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
 }
 
-.messages-container::-webkit-scrollbar {
-  width: 6px;
+@keyframes pulse-strong {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
 }
 
-.messages-container::-webkit-scrollbar-track {
-  background: #222;
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
-.messages-container::-webkit-scrollbar-thumb {
-  background-color: #7E69AB;
-  border-radius: 20px;
+.animate-pulse-light {
+  animation: pulse-light 2s infinite ease-in-out;
 }
+
+.animate-pulse-strong {
+  animation: pulse-strong 1.5s infinite ease-in-out;
+}
+
+.animate-ripple {
+  animation: ripple 2s infinite ease-out;
+}
+
+/* Fade in animation for messages */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Remove the messages container styles since we're not using chat */

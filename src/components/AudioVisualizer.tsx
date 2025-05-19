@@ -7,7 +7,7 @@ interface AudioVisualizerProps {
 }
 
 const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ isListening, isMuted }) => {
-  // Different states for the orb visualization
+  // Make the orb larger for better visibility as main interface element
   const getOrbClasses = () => {
     if (isMuted) return 'orb bg-gray-500 opacity-50'; // Muted state
     if (isListening) return 'orb bg-purple-DEFAULT animate-pulse-strong'; // Active listening
@@ -22,6 +22,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ isListening, isMuted 
           <>
             <div className="orb-ripple animate-ripple opacity-60"></div>
             <div className="orb-ripple animate-ripple opacity-30" style={{ animationDelay: '0.5s' }}></div>
+            <div className="orb-ripple animate-ripple opacity-10" style={{ animationDelay: '1s' }}></div>
           </>
         )}
       </div>
